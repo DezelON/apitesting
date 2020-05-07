@@ -43,6 +43,16 @@ def update(request):
         return Response({"error": 'application with this "api" not found'})
 
 @api_view(http_method_names=['POST'])
+def delete(request):
+    api = request.data.get("api")
+    app = Application.get(api=api)
+    if app is not None:
+        app.delete()
+        return Response({"success": 'application successfully uninstalled'})
+    else:
+        return Response({"error": 'application with this "api" not found'})
+
+@api_view(http_method_names=['POST'])
 def update_api(request):
     secret_key = request.data.get("secret_key")
     if secret_key == configs.secret_key:

@@ -23,5 +23,6 @@ urlpatterns = [
     path('api/test', views.test),
     path('api/create', views.create),
     path('api/update', views.update),
+    path('api/delete', views.delete),
     path('api/update_api', views.update_api)
 ]
